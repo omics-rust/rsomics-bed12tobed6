@@ -47,7 +47,7 @@ impl Tool for Cli {
         };
         let stdout = io::stdout();
         let out = stdout.lock();
-        if self.input == PathBuf::from("-") {
+        if self.input == std::path::Path::new("-") {
             bed12tobed6(io::stdin().lock(), &opts, out)
         } else {
             let f = File::open(&self.input).map_err(RsomicsError::Io)?;
