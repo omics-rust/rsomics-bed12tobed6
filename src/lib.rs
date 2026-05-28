@@ -13,17 +13,10 @@ use std::io::{BufRead, BufReader, BufWriter, Read, Write};
 
 use rsomics_common::{Result, RsomicsError};
 
+#[derive(Default)]
 pub struct Bed12ToBed6Opts {
     /// Replace score with 1-based block number instead of the original score.
     pub block_num_score: bool,
-}
-
-impl Default for Bed12ToBed6Opts {
-    fn default() -> Self {
-        Self {
-            block_num_score: false,
-        }
-    }
 }
 
 pub fn bed12tobed6<W: Write>(reader: impl Read, opts: &Bed12ToBed6Opts, out: W) -> Result<()> {
